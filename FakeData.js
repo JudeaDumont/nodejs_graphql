@@ -33,4 +33,17 @@ const UserList = [
     },
 ]
 
-module.exports = {UserList}
+const MovieList = [
+    {
+        id:1,
+        name: "Chef",
+        year:2007
+    },
+    {
+        id:2,
+        name: "Deece",
+        year:2011
+    },
+]
+
+module.exports = {UserList, MovieList}

@@ -8,6 +8,13 @@ const typeDefs = gql`
         age:Int!
         nationality:Nationality!
         friends:[User!]
+        favoriteMovies:[Movie]
+    }
+    
+    type Movie {
+        id:ID!
+        name:String!
+        year:Int!
     }
     
     enum Nationality{
@@ -17,6 +24,9 @@ const typeDefs = gql`
     
     type Query {
         users:[User!]!
+        user(id:ID!): User!
+        movies:[Movie!]!
+        movie(name: String!): Movie!
     }
 `
 module.exports = {typeDefs}
