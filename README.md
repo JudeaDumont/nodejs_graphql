@@ -39,4 +39,4 @@ Enum "Enum Name" cannot represent value: "whatever you put in there"
 
 - this seems really fragile to me because that means if your database diverges in anyway, your queries won't work anymore.
 
--
+- 
