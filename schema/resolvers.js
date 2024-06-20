@@ -29,6 +29,29 @@ const resolvers = {
                     movie.year >= 2000 && movie.year <= 2010
             )
         }
+    },
+    Mutation: {
+        createUser: (parent, args) => {
+            const user = args.input
+
+            user.id = UserList[UserList.length - 1].id + 1
+
+            UserList.push(user)
+
+            console.log(user)
+
+            return user
+        },
+        updateUsername: (parent, args) => {
+
+            const user = _.find(UserList, {id: Number(args.input.id)});
+
+            user.username = args.input.newUsername
+
+            console.log(user)
+
+            return user
+        }
     }
 }
 

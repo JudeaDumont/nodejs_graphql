@@ -28,5 +28,23 @@ const typeDefs = gql`
         movies:[Movie!]!
         movie(name: String!): Movie!
     }
+    
+    input CreateUserInput {
+        name: String!
+        username:String!
+        age:Int = 18
+        nationality:Nationality = AMERICA
+    }
+
+    input UpdateUsernameInput {
+        id: ID!
+        newUsername: String!
+    }
+    
+    type Mutation {
+        createUser(input: CreateUserInput!): User!
+        updateUsername(input: UpdateUsernameInput):User!
+    }
+
 `
 module.exports = {typeDefs}
