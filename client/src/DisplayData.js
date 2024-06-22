@@ -71,7 +71,7 @@ function DisplayData() {
 
     const [createUser] = useMutation(CREATE_USER_MUTATION)
 
-    const allUsers = useQuery(QUERY_ALL_USERS).data
+    const {data: allUsers, loading, refetch : refetchUsers} = useQuery(QUERY_ALL_USERS)
     const allMovies = useQuery(QUERY_ALL_MOVIES).data
     const [fetchMovie, {data: movieSearchedData, error: movieError}] =
         useLazyQuery(QUERY_MOVIE_BY_NAME)
@@ -99,6 +99,7 @@ function DisplayData() {
                 (event)=>{setNationality(event.target.value)}}></input>
             <button onClick={()=>{
                 createUser({variables:{createUserInput:{name, username, age, nationality}}})
+                refetchUsers();
             }}>Create User</button>
         </div>
 
