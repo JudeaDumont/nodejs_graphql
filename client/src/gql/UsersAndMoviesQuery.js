@@ -8,15 +8,22 @@ export const QUERY_ALL = gql`
         nationality
     }
     query AllQuery {
-        users {
-            ...UserInfo
-            friends {
-                name
-                age
+        users{
+            ...on UsersSuccess {
+                users {
+                    ...UserInfo
+                    friends {
+                        name
+                        age
+                    }
+                    favoriteMovies {
+                        name
+                        year
+                    }
+                }
             }
-            favoriteMovies {
-                name
-                year
+            ...on Error{
+                message
             }
         }
         movies {

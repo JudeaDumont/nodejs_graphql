@@ -4,8 +4,9 @@ const _ = require("lodash")
 const resolvers = {
     Query: {
         users: (parent, args, context, info) => {
-            console.log( "context.req.headers:\n" + JSON.stringify(context.req.headers))
-            return UserList;
+            console.log("context.req.headers:\n" + JSON.stringify(context.req.headers))
+            if (UserList) return {users: UserList};
+            return {message: "Error"}
         },
         user: (parent, args) => {
             const id = args.id;
@@ -47,8 +48,21 @@ const resolvers = {
         },
         deleteUser: (parent, args) => {
             const user = _.find(UserList, {id: Number(args.id)});
-            _.remove(UserList, (user)=> user.id === Number(args.id))
+            _.remove(UserList, (user) => user.id === Number(args.id))
             return user;
+        }
+    },
+    UsersResult: {
+        __resolveType(obj) {
+            if (obj.users) {
+                return "UsersSuccess";
+            } else if(obj.message) {
+                return "Error"
+            }
+            else {
+                //graphQL layer
+                return null
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ export default function AllUsersBasicTable(all, refetchUsers) {
     let [deleteUser] = useMutation(DELETE_USER_MUTATION);
 
     return (
-        all && all.users &&
+        all && all.users && all.users.users &&
         <>
             <h1>List of Users</h1>
             <TableContainer component={Paper}>
@@ -29,7 +29,7 @@ export default function AllUsersBasicTable(all, refetchUsers) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {all.users.map((row) => (
+                        {all.users.users.map((row) => (
                             <TableRow
                                 key={row.id}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
