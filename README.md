@@ -39,4 +39,13 @@ Enum "Enum Name" cannot represent value: "whatever you put in there"
 
 - this seems really fragile to me because that means if your database diverges in anyway, your queries won't work anymore.
 
-- 
+# Must reuse useQuery and useMutation objects
+`Cannot read properties of undefined (reading 'length')
+TypeError: Cannot read properties of undefined (reading 'length')
+at areHookInputsEqual`
+
+The above error will occur if you call useMutation or useQuery 
+multiple times with the same query. This suggests that, 
+if you need a delete button for every row in a table, per-say, 
+that the delete mutation will need to be passed into the component
+that creates that table. Each button will reuse it.
