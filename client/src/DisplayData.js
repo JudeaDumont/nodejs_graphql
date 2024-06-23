@@ -2,8 +2,8 @@ import React from "react";
 import {gql, useQuery} from "@apollo/client";
 import {CreateUserDiv} from "./CreateUserDiv";
 import {MovieSearchDiv} from "./MovieSearchDiv";
-import {AllUsersDiv} from "./AllUsersDiv";
-import {AllMoviesDiv} from "./AllMoviesDiv";
+import AllMoviesBasicTable from "./AllMoviesBasicTable";
+import AllUsersBasicTable from "./AllUsersBasicTable";
 
 const QUERY_ALL_USERS = gql`
     query AllUsersQuery {
@@ -28,8 +28,9 @@ function DisplayData() {
     }
     return <div>
         {CreateUserDiv(refetchUsers)}
-        {AllUsersDiv(allUsers)}
-        {AllMoviesDiv()}
+        {AllUsersBasicTable(allUsers)}
+        {AllMoviesBasicTable()}
+        {AllMoviesBasicTable()}
         {MovieSearchDiv()}
     </div>
 }
