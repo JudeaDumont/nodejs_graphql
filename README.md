@@ -19,6 +19,15 @@ query ExampleQuery {
     }
 }
 
+# Information:
+- In resolvers the users query takes four 
+arguments that it does not need
+with the intention of exposition
+and will often be part of the problem-solving solution
+- `context.req.headers` 
+can be used to check authorization headers
+- `info` can be used to check schema design etc.
+
 # TroubleShooting:
 
 "Cannot return null from non-nullable field Query.*"
@@ -70,3 +79,4 @@ query into each component:
 rather than
 
 `UserDiv(all.users); MovieDiv(all.movies)`
+

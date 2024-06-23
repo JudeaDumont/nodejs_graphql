@@ -3,7 +3,8 @@ const _ = require("lodash")
 
 const resolvers = {
     Query: {
-        users: () => {
+        users: (parent, args, context, info) => {
+            console.log( "context.req.headers:\n" + JSON.stringify(context.req.headers))
             return UserList;
         },
         user: (parent, args) => {

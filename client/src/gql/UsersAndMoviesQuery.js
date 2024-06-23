@@ -1,16 +1,22 @@
 import {gql} from "@apollo/client";
 
 export const QUERY_ALL = gql`
+    fragment UserInfo on User {
+        name
+        username
+        age
+        nationality
+    }
     query AllQuery {
         users {
-            id
-            name
-            username
-            age
-            nationality
+            ...UserInfo
             friends {
                 name
                 age
+            }
+            favoriteMovies {
+                name
+                year
             }
         }
         movies {
