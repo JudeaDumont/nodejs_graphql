@@ -1,30 +1,10 @@
 import React from "react";
-import {gql, useQuery} from "@apollo/client";
+import {useQuery} from "@apollo/client";
 import {CreateUserDiv} from "./CreateUserDiv";
 import {MovieSearchDiv} from "./MovieSearchDiv";
 import AllMoviesBasicTable from "./AllMoviesBasicTable";
 import AllUsersBasicTable from "./AllUsersBasicTable";
-
-const QUERY_ALL = gql`
-    query AllQuery {
-        users {
-            id
-            name
-            username
-            age
-            nationality
-            friends {
-                name
-                age
-            }
-        }
-        movies {
-            id
-            name
-            year
-        }
-    }
-`
+import {QUERY_ALL} from "./gql/UsersAndMoviesQuery";
 
 function DisplayData() {
     const {data: all, loadingAll, refetch: refetchAll} = useQuery(QUERY_ALL)

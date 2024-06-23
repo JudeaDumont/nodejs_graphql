@@ -1,17 +1,6 @@
-import {gql, useMutation} from "@apollo/client";
+import {useMutation} from "@apollo/client";
 import React, {useState} from "react";
-
-const CREATE_USER_MUTATION = gql`
-    mutation CreateUser($createUserInput:CreateUserInput!){
-        createUser(input: $createUserInput){
-            id
-            name
-            username
-            age
-            nationality
-        }
-    }
-`
+import {CREATE_USER_MUTATION} from "./gql/CreateUserMutation";
 
 export function CreateUserDiv(refetchUsers) {
 

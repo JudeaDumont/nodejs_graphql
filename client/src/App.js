@@ -13,7 +13,6 @@ function App() {
         <ApolloProvider client={client}>
             <div className={"App"}>
                 <DisplayData></DisplayData>
-
             </div>
         </ApolloProvider>
     );

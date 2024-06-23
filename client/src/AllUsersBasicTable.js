@@ -7,15 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {DeleteButton} from "./DeleteButton";
-import {gql, useMutation} from "@apollo/client";
-
-const DELETE_USER_MUTATION = gql`
-    mutation DeleteUser ($deleteUserId:ID!){
-        deleteUser(id: $deleteUserId) {
-            id
-        }
-    }
-`
+import {useMutation} from "@apollo/client";
+import {DELETE_USER_MUTATION} from "./gql/DeleteUserMutation";
 
 export default function AllUsersBasicTable(all, refetchUsers) {
     let [deleteUser] = useMutation(DELETE_USER_MUTATION);
