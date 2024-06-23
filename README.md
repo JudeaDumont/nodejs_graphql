@@ -49,3 +49,24 @@ multiple times with the same query. This suggests that,
 if you need a delete button for every row in a table, per-say, 
 that the delete mutation will need to be passed into the component
 that creates that table. Each button will reuse it.
+
+# Cannot query data then split it into two components:
+`AllUsersBasicTable.js:21 Warning: React has detected a 
+change in the order of Hooks called by DisplayData. 
+This will lead to bugs and errors if not fixed. 
+For more information, read the Rules of Hooks: 
+https://reactjs.org/link/rules-of-hooks`
+
+also it will throw:
+
+`Should have a queue. This is likely a bug in React. Please file an issue.
+at updateReducer`
+
+you can subvert this by passing the whole 
+query into each component:
+
+`UserDiv(all); MovieDiv(all)` 
+
+rather than
+
+`UserDiv(all.users); MovieDiv(all.movies)`

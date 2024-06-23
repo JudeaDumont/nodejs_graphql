@@ -17,40 +17,43 @@ const DELETE_USER_MUTATION = gql`
     }
 `
 
-export default function AllUsersBasicTable(allUsers, refetchUsers) {
+export default function AllUsersBasicTable(all, refetchUsers) {
     let [deleteUser] = useMutation(DELETE_USER_MUTATION);
 
     return (
-        allUsers &&
-        <TableContainer component={Paper}>
-            <Table sx={{minWidth: 650}} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>ID</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Username</TableCell>
-                        <TableCell>Age</TableCell>
-                        <TableCell>Nationality</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {allUsers.users.map((row) => (
-                        <TableRow
-                            key={row.id}
-                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                        >
-                            <TableCell>{row.id}</TableCell>
-                            <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.username}</TableCell>
-                            <TableCell>{row.age}</TableCell>
-                            <TableCell>{row.nationality}</TableCell>
-                            <TableCell>
-                                {DeleteButton(deleteUser, row.id, refetchUsers)}
-                            </TableCell>
+        all && all.users &&
+        <>
+            <h1>List of Users</h1>
+            <TableContainer component={Paper}>
+                <Table sx={{minWidth: 650}} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Name</TableCell>
+                            <TableCell>Username</TableCell>
+                            <TableCell>Age</TableCell>
+                            <TableCell>Nationality</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {all.users.map((row) => (
+                            <TableRow
+                                key={row.id}
+                                sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                            >
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.name}</TableCell>
+                                <TableCell>{row.username}</TableCell>
+                                <TableCell>{row.age}</TableCell>
+                                <TableCell>{row.nationality}</TableCell>
+                                <TableCell>
+                                    {DeleteButton(deleteUser, row.id, refetchUsers)}
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 }

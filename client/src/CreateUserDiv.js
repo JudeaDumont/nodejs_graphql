@@ -21,6 +21,7 @@ export function CreateUserDiv(refetchUsers) {
     const [age, setAge] = useState(0)
     const [nationality, setNationality] = useState("")
     return <div>
+        <h1>Create User</h1>
         <input type="text" placeholder="Name..." onChange={
             (event) => {
                 setName(event.target.value)

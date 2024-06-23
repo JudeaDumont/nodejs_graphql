@@ -6,46 +6,36 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {gql, useQuery} from "@apollo/client";
 
-//this is case-sensitive
-const QUERY_ALL_MOVIES = gql`
-    query AllMoviesQuery{
-        movies{
-            id
-            name
-            year
-        }
-    }
-`
-export default function AllMoviesBasicTable() {
-
-    const allMovies = useQuery(QUERY_ALL_MOVIES).data
+export default function AllMoviesBasicTable(all) {
 
     return (
-        allMovies &&
-        <TableContainer component={Paper}>
-            <Table sx={{minWidth: 650}} aria-label="Movies">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>ID</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Year</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {allMovies.movies.map((row) => (
-                        <TableRow
-                            key={row.id}
-                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                        >
-                            <TableCell>{row.id}</TableCell>
-                            <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.year}</TableCell>
+        all && all.movies &&
+        <>
+            <h1>List of Movies</h1>
+            <TableContainer component={Paper}>
+                <Table sx={{minWidth: 650}} aria-label="simple-table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Name</TableCell>
+                            <TableCell>Year</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {all.movies.map((row) => (
+                            <TableRow
+                                key={row.id}
+                                sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                            >
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.name}</TableCell>
+                                <TableCell>{row.year}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 }

@@ -5,8 +5,8 @@ import {MovieSearchDiv} from "./MovieSearchDiv";
 import AllMoviesBasicTable from "./AllMoviesBasicTable";
 import AllUsersBasicTable from "./AllUsersBasicTable";
 
-const QUERY_ALL_USERS = gql`
-    query AllUsersQuery {
+const QUERY_ALL = gql`
+    query AllQuery {
         users {
             id
             name
@@ -18,18 +18,24 @@ const QUERY_ALL_USERS = gql`
                 age
             }
         }
+        movies {
+            id
+            name
+            year
+        }
     }
 `
-function DisplayData() {
-    const {data: allUsers, loading, refetch: refetchUsers} = useQuery(QUERY_ALL_USERS)
 
-    if (allUsers) {
-        console.log(allUsers)
+function DisplayData() {
+    const {data: all, loadingAll, refetch: refetchAll} = useQuery(QUERY_ALL)
+
+    if (all) {
+        console.log(all)
     }
     return <div>
-        {CreateUserDiv(refetchUsers)}
-        {AllUsersBasicTable(allUsers, refetchUsers)}
-        {AllMoviesBasicTable()}
+        {CreateUserDiv(refetchAll)}
+        {AllUsersBasicTable(all, refetchAll)}
+        {AllMoviesBasicTable(all)}
         {MovieSearchDiv()}
     </div>
 }
