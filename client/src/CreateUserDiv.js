@@ -6,7 +6,9 @@ const CREATE_USER_MUTATION = gql`
         createUser(input: $createUserInput){
             id
             name
+            username
             age
+            nationality
         }
     }
 `

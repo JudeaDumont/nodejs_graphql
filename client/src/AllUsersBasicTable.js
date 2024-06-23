@@ -6,8 +6,19 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {Button} from "@mui/material";
+import {gql, useMutation} from "@apollo/client";
 
-export default function AllUsersBasicTable(allUsers) {
+const DELETE_USER_MUTATION = gql`
+    mutation DeleteUser ($deleteUserId:ID!){
+        deleteUser(id: $deleteUserId) {
+            id
+        }
+    }
+`
+
+export default function AllUsersBasicTable(allUsers, refetchUsers) {
+    let [deleteUser] = useMutation(DELETE_USER_MUTATION);
     return (
         allUsers &&
         <TableContainer component={Paper}>
@@ -32,6 +43,21 @@ export default function AllUsersBasicTable(allUsers) {
                             <TableCell>{row.username}</TableCell>
                             <TableCell>{row.age}</TableCell>
                             <TableCell>{row.nationality}</TableCell>
+                            <TableCell>
+                                <Button
+                                    onClick={(e) => {
+                                        deleteUser(
+                                            {
+                                                variables: {
+                                                    deleteUserId: row.id
+                                                }
+                                            })
+                                        refetchUsers();
+                                    }}
+                                    variant="contained">
+                                    X
+                                </Button>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

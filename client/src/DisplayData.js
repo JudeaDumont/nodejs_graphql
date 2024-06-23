@@ -28,8 +28,7 @@ function DisplayData() {
     }
     return <div>
         {CreateUserDiv(refetchUsers)}
-        {AllUsersBasicTable(allUsers)}
-        {AllMoviesBasicTable()}
+        {AllUsersBasicTable(allUsers, refetchUsers)}
         {AllMoviesBasicTable()}
         {MovieSearchDiv()}
     </div>

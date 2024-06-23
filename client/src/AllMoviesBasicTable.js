@@ -39,8 +39,8 @@ export default function AllMoviesBasicTable() {
                             key={row.id}
                             sx={{'&:last-child td, &:last-child th': {border: 0}}}
                         >
-                            <TableCell component="th" scope="row">{row.id}</TableCell>
-                            <TableCell component="th" scope="row">{row.name}</TableCell>
+                            <TableCell>{row.id}</TableCell>
+                            <TableCell>{row.name}</TableCell>
                             <TableCell>{row.year}</TableCell>
                         </TableRow>
                     ))}
