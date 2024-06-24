@@ -2,6 +2,7 @@ import {gql} from "@apollo/client";
 
 export const QUERY_ALL = gql`
     fragment UserInfo on User {
+        id
         name
         username
         age
