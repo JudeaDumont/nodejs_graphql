@@ -22,7 +22,7 @@ export const QUERY_ALL = gql`
                     }
                 }
             }
-            ...on Error{
+            ...on Error {
                 message
             }
         }

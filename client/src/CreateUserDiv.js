@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import {CREATE_USER_MUTATION} from "./gql/CreateUserMutation";
 
 export function CreateUserDiv(refetchUsers) {
-
     const [createUser] = useMutation(CREATE_USER_MUTATION)
     const [name, setName] = useState("")
     const [username, setUsername] = useState("")

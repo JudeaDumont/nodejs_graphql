@@ -6,7 +6,7 @@ const resolvers = {
         users: (parent, args, context, info) => {
             console.log("context.req.headers:\n" + JSON.stringify(context.req.headers))
             if (UserList) return {users: UserList};
-            return {message: "Error"}
+            return {message: "Error From Resolver"}
         },
         user: (parent, args) => {
             const id = args.id;
