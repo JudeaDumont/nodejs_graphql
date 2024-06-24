@@ -25,7 +25,7 @@ export default function AllMoviesBasicTable(all) {
                     <TableBody>
                         {all.movies.map((row) => (
                             <TableRow
-                                key={row.id}
+                                key={crypto.randomUUID()}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
                                 <TableCell>{row.id}</TableCell>

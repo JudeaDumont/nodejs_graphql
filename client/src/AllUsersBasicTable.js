@@ -31,7 +31,7 @@ export default function AllUsersBasicTable(all, refetchUsers) {
                     <TableBody>
                         {all.users.users.map((row) => (
                             <TableRow
-                                key={row.id}
+                                key={crypto.randomUUID()}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
                                 <TableCell>{row.id}</TableCell>
